@@ -36,15 +36,12 @@ const stringToUnicode=(str:string)=>{
       const node = figma.currentPage.selection[0];
       if(node.type == 'TEXT'){
       if (msg.type === "typing") {
-
-       
         const font=JSON.parse(JSON.stringify(node.fontName));
         figma.loadFontAsync(font).then(()=>{
         node.characters=convert(msg.value,"SMART_FIGMA");
         if(isArabic(node.characters)&&!node.characters.includes(" ")&&isArabic(node.characters.charAt(0)))
         node.characters=  node.characters.split("\n").reverse().join();
 });
-
       }
 
 }
